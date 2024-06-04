@@ -22,7 +22,7 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
   role      ROLE      @default(USER)
-  gender    GENDER
+  gender    GENDER    @default(MALE)
   orders    Order[]
   products  Product[] @relation("UserProducts")
 }
