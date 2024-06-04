@@ -25,7 +25,20 @@ model User {
   gender    GENDER    @default(MALE)
   orders    Order[]
   products  Product[] @relation("UserProducts")
+  forgotPassword  ForgotPassword?
+
+
 }
+
+model ForgotPassword {
+  id        String    @id @unique @default(cuid())
+  token     String
+  userId    String    @unique
+  user      User      @relation(fields: [userId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
 
 model Order {
   id        String       @id @unique @default(cuid())
