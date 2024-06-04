@@ -4,10 +4,11 @@ import { AuthController } from './auth.controller';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UserModule } from 'src/modules/user/user.module';
 import { JwtModule } from '@nestjs/jwt';
+import { MailService } from 'src/modules/mail/mail.service';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, PrismaService],
+  providers: [AuthService, PrismaService, MailService],
   imports: [
     JwtModule.register({
       secret: process.env.JWT_SECRET,
