@@ -21,6 +21,8 @@ model User {
   address   String
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+  role      ROLE      @default(USER)
+  gender    GENDER
   orders    Order[]
   products  Product[] @relation("UserProducts")
 }
@@ -74,6 +76,14 @@ model OrderProduct {
   order     Order   @relation(fields: [orderId], references: [id])
   product   Product @relation(fields: [productId], references: [id])
   @@id([orderId, productId])
-  @@index([orderId])
-  @@index([productId])
+}
+
+enum ROLE {
+  ADMIN
+  USER
+}
+
+enum GENDER {
+  MALE
+  FEMALE
 }
