@@ -19,7 +19,6 @@ export class MailService {
 
     try {
       await sgMail.send(msg);
-      console.log('Reset password email sent successfully');
     } catch (error) {
       console.error('Error sending reset password email', error);
     }
